@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Telefonun Başında Çaresiz Bekliyorum</title>
+  <style>
+    body {
+      margin: 0;
+      font-family: Arial, sans-serif;
+      background: linear-gradient(135deg, #ffafbd, #ffc3a0);
+      overflow: hidden;
+      color: white;
+      text-align: center;
+    }
+    h1 {
+      font-size: 3em;
+      margin-top: 30px;
+      text-shadow: 2px 2px 5px rgba(0,0,0,0.4);
+      animation: pulse 2s infinite;
+    }
+    @keyframes pulse {
+      0%,100% { transform: scale(1); }
+      50% { transform: scale(1.1); }
+    }
+    .emoji {
+      position: absolute;
+      font-size: 3rem;
+      animation: floatDown 6s linear infinite;
+      opacity: 0.9;
+    }
+    @keyframes floatDown {
+      0% { transform: translateY(-100vh); }
+      100% { transform: translateY(100vh); }
+    }
+    .phone {
+      font-size: 6rem;
+      margin-top: 50px;
+      animation: ring 0.8s infinite;
+    }
+    @keyframes ring {
+      0%,100% { transform: rotate(0deg); }
+      25% { transform: rotate(10deg); }
+      75% { transform: rotate(-10deg); }
+    }
+    .bottom-text {
+      position: absolute;
+      bottom: 20px;
+      width: 100%;
+      font-size: 1.5em;
+      text-shadow: 1px 1px 4px rgba(0,0,0,0.5);
+    }
+    audio {
+      display: none;
+    }
+  </style>
+</head>
+<body>
+  <h1>Telefonun Başında Çaresiz Bekliyorum 😭</h1>
+  <div class="phone">📞</div>
+  <div class="bottom-text">Aramadın ya, kırıldım... 😢</div>
+
+  <audio autoplay loop>
+    <source src="bir_telefon.mp3" type="audio/mpeg">
+  </audio>
+
+  <script>
+    const emojis = ["😭","😢","😞","🥺","😩"];
+    for (let i = 0; i < 25; i++) {
+      const e = document.createElement("div");
+      e.className = "emoji";
+      e.innerText = emojis[Math.floor(Math.random() * emojis.length)];
+      e.style.left = Math.random() * 100 + "vw";
+      e.style.animationDuration = (4 + Math.random() * 4) + "s";
+      document.body.appendChild(e);
+    }
+  </script>
+</body>
+</html>
